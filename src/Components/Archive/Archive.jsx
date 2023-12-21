@@ -11,18 +11,19 @@ box-shadow:none;
 border:2px solid #e0e0e0;
 border-radius:4px`;
 const Archive = ({ archive }) => {
-    const{notes,setnotes,archivenotes,setarchivenotes,setdeletenotes}=useContext(Datacontext);
-   const UnArchiveNote=(archive)=>{
-const updatedNotes=archivenotes.filter(data=>data.id !== archive.id);
-console.log(updatedNotes,"updated");
-setarchivenotes(updatedNotes);
- setnotes(preva=>[archive,...preva]);
+    const { notes, setnotes, archivenotes, setarchivenotes, setdeletenotes } = useContext(Datacontext);
+
+    const UnArchiveNote = (archive) => {
+        const updatedNotes = archivenotes.filter(data => data.id !== archive.id);
+        console.log(updatedNotes, "updated");
+        setarchivenotes(updatedNotes);
+        setnotes(preva => [archive, ...preva]);
     }
-   const DeleteNote=(archive)=>{
-    const updatedNotes=archivenotes.filter(data=>data.id !== archive.id);
-    // console.log(updatedNotes,"updated");
-    setarchivenotes(updatedNotes);
-    setdeletenotes(preva=>[archive,...preva]);
+    const DeleteNote = (archive) => {
+        const updatedNotes = archivenotes.filter(data => data.id !== archive.id);
+        // console.log(updatedNotes,"updated");
+        setarchivenotes(updatedNotes);
+        setdeletenotes(preva => [archive, ...preva]);
     }
     return (
 
@@ -33,10 +34,10 @@ setarchivenotes(updatedNotes);
             </CardContent>
             <CardActions>
                 <UnArchive
-                 fontSize='small' 
-                 style={{ marginLeft: 'auto' }}
-                 onClick={()=>UnArchiveNote(archive)} />
-                <Delete fontSize='small'  onClick={()=>DeleteNote(archive)}/>
+                    fontSize='small'
+                    style={{ marginLeft: 'auto' }}
+                    onClick={() => UnArchiveNote(archive)} />
+                <Delete fontSize='small' onClick={() => DeleteNote(archive)} />
             </CardActions>
         </Styledcard>
 

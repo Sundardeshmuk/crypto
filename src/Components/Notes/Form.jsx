@@ -41,6 +41,7 @@ const Form = () => {
         setAddNote({ ...note, id: uuid() })
         if (addNote.heading || addNote.text) {
             setnotes(preva => [addNote,...preva]);
+            localStorage.setItem("notes",JSON.stringify(notes));
         }
     }
 
