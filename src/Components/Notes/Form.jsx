@@ -29,22 +29,22 @@ const Form = () => {
     const [addNote, setAddNote] = useState({ ...note, id: uuid() });
    const {notes,setnotes}=useContext(Datacontext);
     const containerRef = useRef();
+
     const onTextAreaClick = () => {
         setshowTextField(true);
         containerRef.current.style.minHeight = '70px'
     }
+    
     const handleClickaway = () => {
         setshowTextField(false);
         containerRef.current.style.minHeight = '30px'
         setAddNote({ ...note, id: uuid() })
         if (addNote.heading || addNote.text) {
             setnotes(preva => [addNote,...preva]);
-            // setnotes(addNote);
         }
-        // console.log(notes);
     }
+
     const onTextChange = (e) => {
-        console.log(e.target.name,e.target.value);
         let changedNotes = { ...addNote, [e.target.name]: e.target.value }
         setAddNote(changedNotes);
     }
@@ -61,7 +61,7 @@ const Form = () => {
                         value={addNote.heading}
                     />
                 }
-                <TextField placeholder='Take a note...'
+                <TextField placeholder='Write a note...'
                     variant='standard'
                     multiline 
                     maxRows={Infinity}
